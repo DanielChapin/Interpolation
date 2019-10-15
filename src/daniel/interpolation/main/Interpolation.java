@@ -1,4 +1,4 @@
-package daniel.scrollingterrain.main;
+package daniel.interpolation.main;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -14,7 +14,7 @@ public class Interpolation extends JFrame {
 	
 	static final int FPS = 60;
 	
-	final Dimension gridSize = new Dimension(4, 4);
+	final Dimension gridSize = new Dimension(10, 10);
 	
 	double[] heights;
 	int[] directions;
@@ -80,8 +80,10 @@ public class Interpolation extends JFrame {
 				for (int x_ = 0; x_ < dx; x_++) {
 					for (int y_ = 0; y_ < dy; y_++) {
 						double height = bilerp(getHeight(x, y), getHeight(x + 1, y), getHeight(x, y + 1), getHeight(x + 1, y + 1), (double) x_ / dx, (double) y_ / dy);
-						g.setColor(Color.getHSBColor((float) height, 1, 1));
-						g.fillRect(x * dx + x_, y * dy + y_, 3, 3);
+						g.setColor(Color.getHSBColor((float) height, 1f, 1f));
+//						g.setColor(new Color((float) height, (float) height, (float) height));
+//						g.setColor(new Color((int) (255 * height)));
+						g.fillRect(x * dx + x_, y * dy + y_, 1, 1);
 					}
 				}
 			}
